@@ -3,25 +3,25 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [users, setUsers] = useState([]); // Store all registered users
-  const [loggedInUser, setLoggedInUser] = useState(null); // Store the currently logged-in user
+  const [users, setUsers] = useState([]); // Store registered users
+  const [loggedInUser, setLoggedInUser] = useState(null); // Store the logged-in user
 
   // Register a new user
-  const register = (username, password) => {
-    const newUser = { username, password };
+  const register = (email, password, name) => {
+    const newUser = { email, password, name };
     setUsers([...users, newUser]);
     setLoggedInUser(newUser);
   };
 
   // Login user
-  const login = (username, password) => {
+  const login = (email, password) => {
     const existingUser = users.find(
-      (user) => user.username === username && user.password === password
+      (user) => user.email === email && user.password === password
     );
     if (existingUser) {
       setLoggedInUser(existingUser);
     } else {
-      alert("Invalid username or password!");
+      alert("Invalid email or password!");
     }
   };
 
