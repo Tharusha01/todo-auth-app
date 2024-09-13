@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+import Register from "./Register";
+import Login from "./Login";
+import { TodoProvider } from "./TodoContext";
+import TodoList from "./TodoList";
 
 function App() {
+  const { loggedInUser, logout } = useContext(AuthContext);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Todo App with Authentication</h1>
+      {loggedInUser ? (
+        <TodoProvider>
+          <div>
+            <h2>Welcome, {loggedInUser.username}</h2>
+            <button onClick={logout}>Logout</button>
+            <TodoList />
+          </div>
+        </TodoProvider>
+      ) : (
+        <div>
+          <Register />
+          <Login />
+        </div>
+      )}
     </div>
   );
 }
