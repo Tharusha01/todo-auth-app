@@ -23,7 +23,7 @@ function TodoList() {
   };
 
   return (
-    <ListGroup>
+    <ListGroup className="list-group-horizontal">
       {todos.map((todo) => (
         <ListGroup.Item
           key={todo.id}
@@ -74,7 +74,7 @@ function TodoList() {
               <Button
                 variant="info"
                 onClick={() => handleEdit(todo)}
-                className="ms-2"
+                className="ms-2 mt-2"
               >
                 Edit
               </Button>

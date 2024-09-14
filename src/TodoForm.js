@@ -19,7 +19,7 @@ function TodoForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="form-container" onSubmit={handleSubmit}>
       <Form.Group controlId="todoTitle">
         <Form.Label>Title</Form.Label>
         <Form.Control
