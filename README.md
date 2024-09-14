@@ -8,7 +8,6 @@ A simple Todo App with authentication using React.
 * [Features](#features)
 * [Getting Started](#getting-started)
 * [Technology Stack](#technology-stack)
-* [Contributing](#contributing)
 * [License](#license)
 
 ## Introduction
@@ -25,19 +24,19 @@ This is a simple Todo App with authentication using React. The app allows users 
 
 ## Getting Started
 
-To get started with the app, simply clone the repository and run `npm install` to install the dependencies. Then, run `npm start` to start the development server.
+To get started with the app, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/your-github-handle/todo-auth-app.git`
+2. Install the dependencies: `npm install`
+3. install bootstrap: `npm install bootstrap`  
+4. Start the development server: `npm start`
+5. Open your web browser and navigate to `http://localhost:3000` to view the app
 
 ## Technology Stack
 
 * React
-* Node.js
-* Express.js
-* React Bootstrap
-* Material-UI
+* Bootstrap (as the UI framework)
 
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to the app, please fork the repository and submit a pull request.
 
 ## License
 
