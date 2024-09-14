@@ -25,41 +25,44 @@ function Register() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="registerEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </Form.Group>
+    <div align="center ">
+      <h2 class="font-weight-bold mt-5 ">Register to Your Account</h2>
+      <Form onSubmit={handleSubmit} className="w-50 mx-auto mt-5 " align="left">
+        <Form.Group controlId="registerEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="registerPassword" className="mt-2">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group controlId="registerPassword" className="mt-2">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="registerName" className="mt-2">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group controlId="registerName" className="mt-2">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit" className="mt-3">
-        Register
-      </Button>
-    </Form>
+        <Button variant="primary" type="submit" className="mt-3">
+          Register
+        </Button>
+      </Form>
+    </div>
   );
 }
 

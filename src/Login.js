@@ -21,31 +21,38 @@ function Login() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="loginEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </Form.Group>
+    <div align="center ">
+      <h2 class="font-weight-bold mt-5 ">Login to Your Account</h2>
+      <Form
+        onSubmit={handleSubmit}
+        className=" w-50 mx-auto mt-5 "
+        align="left"
+      >
+        <Form.Group controlId="loginEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="loginPassword" className="mt-2">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group controlId="loginPassword" className="mt-2">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
 
-      <Button variant="success" type="submit" className="mt-3">
-        Login
-      </Button>
-    </Form>
+        <Button variant="success" type="submit" className="mt-3">
+          Login
+        </Button>
+      </Form>
+    </div>
   );
 }
 

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./AuthContext";
-import Register from "./Register";
-import Login from "./Login";
 import { TodoProvider } from "./TodoContext";
 import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
+import Register from "./Register";
+import Login from "./Login";
 import { Container, Button } from "react-bootstrap";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Button variant="danger" onClick={logout} className="mb-3">
               Logout
             </Button>
+            <TodoForm />
             <TodoList />
           </div>
         </TodoProvider>
