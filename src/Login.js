@@ -1,38 +1,56 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username && password) {
-      login(username, password);
-      setUsername("");
-      setPassword("");
+    if (login(email, password)) {
+      navigate("/");
     } else {
-      alert("Please enter both username and password");
+      setError("Invalid email or password");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-container">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="loginEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="loginPassword" className="mt-2">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        {error && <p className="text-danger mt-2">{error}</p>}
+
+        <div className="button-container">
+          <Button variant="primary" type="submit" className="mt-3">
+            Login
+          </Button>
+        </div>
+      </Form>
+    </div>
   );
 }
 

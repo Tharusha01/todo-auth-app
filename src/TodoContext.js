@@ -1,32 +1,34 @@
-import { createContext, useState, useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import React, { createContext, useState } from "react";
 
 const TodoContext = createContext();
 
 function TodoProvider({ children }) {
   const [todos, setTodos] = useState([]);
-  const { user } = useContext(AuthContext); // Get current user
 
+  // Add a new todo
   const addTodo = (title, description) => {
-    const newTodo = {
-      id: Date.now(),
-      title,
-      description,
-      completed: false,
-      username: user?.username, // Add username to todo
-    };
+    const newTodo = { id: Date.now(), title, description, completed: false };
     setTodos([...todos, newTodo]);
   };
 
-  const editTodo = (id, updatedTodo) => {
-    setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
+  // Edit an existing todo
+  const editTodo = (id, updatedTitle, updatedDescription) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? { ...todo, title: updatedTitle, description: updatedDescription }
+          : todo
+      )
+    );
   };
 
+  // Delete a todo
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const toggleComplete = (id) => {
+  // Toggle completion status of a todo
+  const toggleCompletion = (id) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -36,7 +38,7 @@ function TodoProvider({ children }) {
 
   return (
     <TodoContext.Provider
-      value={{ todos, addTodo, editTodo, deleteTodo, toggleComplete }}
+      value={{ todos, addTodo, editTodo, deleteTodo, toggleCompletion }}
     >
       {children}
     </TodoContext.Provider>

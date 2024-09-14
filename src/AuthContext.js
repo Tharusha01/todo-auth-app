@@ -1,28 +1,28 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [users, setUsers] = useState([]); // Store all registered users
-  const [loggedInUser, setLoggedInUser] = useState(null); // Store the currently logged-in user
+  const [users, setUsers] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
-  // Register a new user
-  const register = (username, password) => {
-    const newUser = { username, password };
-    setUsers([...users, newUser]);
-    setLoggedInUser(newUser);
+  const register = (name, email, password) => {
+    if (users.find((user) => user.email === email)) {
+      return false; // User already exists
+    }
+    setUsers([...users, { name, email, password }]);
+    return true; // Registration successful
   };
 
-  // Login user
-  const login = (username, password) => {
-    const existingUser = users.find(
-      (user) => user.username === username && user.password === password
+  const login = (email, password) => {
+    const user = users.find(
+      (user) => user.email === email && user.password === password
     );
-    if (existingUser) {
-      setLoggedInUser(existingUser);
-    } else {
-      alert("Invalid username or password!");
+    if (user) {
+      setLoggedInUser(user);
+      return true; // Login successful
     }
+    return false; // Invalid credentials
   };
 
   const logout = () => {
@@ -30,7 +30,7 @@ function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ loggedInUser, register, login, logout }}>
+    <AuthContext.Provider value={{ loggedInUser, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
