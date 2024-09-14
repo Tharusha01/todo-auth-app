@@ -28,9 +28,8 @@ To get started with the app, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/your-github-handle/todo-auth-app.git`
 2. Install the dependencies: `npm install`
-3. install bootstrap: `npm install bootstrap`  
-4. Start the development server: `npm start`
-5. Open your web browser and navigate to `http://localhost:3000` to view the app
+3. Start the development server: `npm start`
+4. Open your web browser and navigate to `http://localhost:3000` to view the app
 
 ## Technology Stack
 
